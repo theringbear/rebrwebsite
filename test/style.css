@@ -1,0 +1,23 @@
+.sticky-parent{
+    height: 500vh;
+}
+  .sticky{
+    position: sticky;
+    top: 0;
+    margin: auto;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .dim{
+    display: block;
+    min-width: 50vw;
+    height: 100vh;
+  }
+  .horizontal{
+    display: flex;
+  }
+  .test{
+    background-color: red;
+    height: 100vh;
+  }
