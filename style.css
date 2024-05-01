@@ -24,6 +24,8 @@
     --grijs: hsla(0, 0%, 30%, 1);
     --lichtgrijs: hsla(0, 0%, 80%, 1);
     --donkergrijs: hsla(0, 0%, 5%, 1);
+    --gradient-1: linear-gradient(60deg, rgba(138,252,255,1) 0%, rgb(217, 66, 255) 100%);
+    --gradient-2: linear-gradient(135deg, rgba(138,252,255,1) 0%, var(--zwart) 50%, rgba(217,66,255,1) 100%);
 }
 :root {
     --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vi, 0.8rem);
@@ -58,6 +60,9 @@ html{
 }
 #home{
   --paginakleur: var(--persian-green);
+}
+#contact{
+  --paginakleur: var(--paars);
 }
 
 body{
@@ -128,15 +133,17 @@ header.scroll{
 }
 
 .hero{
-  margin-top: 15rem;
+  padding-top: 15rem;
 }
-.hero h1{
+.hero h1,
+.contact h1{
   font-size: 10vw;
   color: var(--wit);
   font-weight: 600;
   text-align: center;
 }
 
+.contact h1::after,
 .hero h1::after{
   content: ' ';
   display: inline-block;
@@ -515,8 +522,7 @@ header.scroll{
   top: 50%;
   translate: -50% -50%;
   border-radius: 50%;
-  background: linear-gradient(to right, aquamarine, mediumpurple);
-  background: linear-gradient(60deg, rgba(138,252,255,1) 0%, rgb(217, 66, 255) 100%);
+  background: var(--gradient-1);
   /* background: beige; */
   background-size: 200%;
   animation: font-color 10s infinite ease-in-out;
@@ -602,14 +608,26 @@ header.scroll{
 .pagetext{
   border-radius: 20px;
   border: 2px solid hsla(0, 0%, 50%, .2);
-  background-color: hsla(0, 0%, 0%, .5);
+  background-color: hsla(0, 0%, 0%, .3);
   position: relative;
   overflow: hidden;
 }
-
+#contact::before,
+.pagetext::before{
+  content: ' ';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--zwart);
+  background: var(--gradient-2);
+  opacity: .1;
+  /* background-size: 200%; */
+  z-index: -1;
+}
 .homepagetext p,
 .pagetext p{
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   color: var(--lichtgrijs);
   text-align: center;
   width: 90%;
@@ -650,7 +668,7 @@ header.scroll{
 .pagetextsec ul li::after,
 .hero ul li::after,
 .learnmore::after{
-  background: linear-gradient(60deg, rgba(138,252,255,1) 0%, rgb(217, 66, 255) 100%);
+  background:var(--gradient-1);
   z-index: -2;
 }
 .hero ul li::before,
@@ -706,18 +724,11 @@ header.scroll{
   width: calc(100% + calc(var(--border-width) * 2));
   height: calc(100% + calc(var(--border-width) * 2));
   border-radius: inherit;
-  background: linear-gradient(60deg, rgba(138,252,255,1) 0%, rgb(217, 66, 255) 100%);
-  background-size: 200%;
+  background: var(--gradient-2);
+  background-size: 150%;
   z-index: -1;
   transition: background-position .2s ease-out;
-  animation: font-color 40s infinite ease-in-out -10s;
-  opacity: .4;
-}
-.servicesrow > div:nth-child(2)::before{
-  animation: font-color 35s infinite ease-in-out -3s;
-}
-.servicesrow > div:nth-child(3)::before{
-  animation: font-color 45s infinite ease-in-out -10s;
+  opacity: .3;
 }
 .servicesrow > div::after{
   content: '';
@@ -730,7 +741,7 @@ header.scroll{
   border-radius: inherit;
   z-index:-1;
   background: var(--zwart);
-  background: hsla(0, 0%, 0%, .7);
+  opacity: .5;
 }
 .servicesrow i{
   font-size: var(--step-6);
@@ -808,10 +819,7 @@ header.scroll{
 .pagetextsec ul li::after{
   border-radius: inherit;
   background-size: 200%;
-}
-.pagetextsec ul li::before{
-  background-color: hsla(0, 0%, 0%, .85);
-  z-index: -1;
+  opacity: 0.3;
 }
 .hero{
   min-height: 500px;
@@ -879,4 +887,131 @@ header.scroll{
 }
 .hero ul li:hover::before{
   background: hsla(0, 0%, 0%, .85);
+}
+
+/* contact page */
+#contact .hero{
+  min-height: max-content;
+}
+.contact{
+  border: 2px solid hsla(0, 0%, 100%, .1);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 60%;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+.contactbox{
+  display: flex;
+  gap: 2rem;
+  /* padding: 2rem; */
+  align-items: center;
+}
+.contactform{
+  width: 100%;
+}
+.contacttext{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+.contact_col_1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  width: 100%;
+}
+.contact_col_1 p{ 
+  width: max-content;
+  color: var(--wit);
+  font-size: var(--step-2);
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 2px solid hsla(0, 0%, 100%, .05);
+  background: none;
+  position: relative;
+  overflow: hidden;
+}
+.contact_col_1 p::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-1);
+  z-index: -1;
+  opacity: 0.1;
+}
+.contact_col_2 p{
+  color: var(--wit);
+  font-size: var(--step-3);
+  font-weight: 500;
+  /* text-transform: uppercase; */
+  padding: 0.25rem;
+  text-align: center;
+  margin: 0 auto;
+}
+.contactform form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.field{
+  position: relative;
+  overflow: hidden;
+}
+.field input{
+  width: 100%;
+  padding: 1rem;
+  font-size: var(--step-2);
+  background: none;
+  border: solid hsla(0, 0%, 100%, .1);
+  border-width: 0 0 2px 0;
+  color: var(--wit);
+  border-radius: 5px;
+  position: relative;
+}
+.field:focus-within::after{
+  opacity: .1;
+  border-radius: 5px;
+}
+.input:focus{
+  outline: none;
+  background-color: color-mix(in lab, var(--wit), hsla(0, 0%, 0%, .1) 90%);
+}
+.contactform #button{
+  padding: 1rem;
+  font-size: var(--step-2);
+  color: var(--wit);
+  border: 2px solid hsla(0, 0%, 100%, .1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .2s ease-in-out;
+  border-radius: 50px;
+  background: none;
+  position: relative;
+  overflow: hidden;
+}
+.contactform #button::after{
+  content: ' ';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--gradient-1);
+  background-size: 200%;
+  z-index: -1;
+  opacity: 0.05;
+  transition: .2s ease-in-out;
+}
+.contactform #button:hover::after{
+  opacity: .1;
 }
