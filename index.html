@@ -8,6 +8,11 @@
     <script src="https://kit.fontawesome.com/84a5521e2a.js" crossorigin="anonymous"></script>
 </head>
 <body id="home">
+    <div class="theme-toggle">
+        <div class="anchor">
+          <div class="sky"></div>
+        </div>
+      </div>
     <div id="blob"></div>
     <div id="blur"></div>
     <div class="mousecirkel"></div>
@@ -32,7 +37,7 @@
             <li data-content="services"><div><a style="--delay: 1" href="/services/">services</a></div></li>
             <li data-content="ons werk"><div><a style="--delay: 2" href="/onswerk">ons werk</a></div></li>
             <li data-content="over ons"><div><a style="--delay: 3" href="/overons/">over ons</a></div></li>
-            <li data-content="contact"><div><a style="--delay: 4" href="/contact/">contact</a></div></li>
+            <!-- <li data-content="contact"><div><a style="--delay: 4" href="/contact/">contact</a></div></li> -->
         </ul>
     </nav>
     <div class="hero">
@@ -113,5 +118,12 @@
   
     <script src="script.js"></script>
     <script src="homepagescript.js"></script>
+    <script>
+        const themeToggle = document.querySelector(".theme-toggle");
+        themeToggle.onclick = () => {
+        document.querySelector("body").classList.toggle("light");
+        console.log("clicked");
+        };
+    </script>
 </body>
 </html>
