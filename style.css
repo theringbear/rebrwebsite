@@ -26,6 +26,7 @@
     --donkergrijs: hsla(0, 0%, 5%, 1);
     --gradient-1: linear-gradient(60deg, rgba(138,252,255,1) 0%, rgb(217, 66, 255) 100%);
     --gradient-2: linear-gradient(135deg, rgba(138,252,255,1) 0%, var(--zwart) 50%, rgba(217,66,255,1) 100%);
+    --border-color: color-mix(in lab, var(--wit), hsla(0, 0%, 0%, .1) 90%);
   }
 :root {
     --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vi, 0.8rem);
@@ -51,9 +52,9 @@ html{
   font-family: 'Raleway', sans-serif;
 }
 /* scrollbar */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0px;
-}
+} */
 /* pagina kleuren */
 #services{
   --paginakleur: var(--rood);
@@ -71,8 +72,8 @@ body.light{
   --persian-green: #2a9d90;
   --rood: rgb(255, 97, 76);
   --paars: rgb(217, 66, 255);
-  --grijs: hsla(0, 0%, 30%, 1);
-  --lichtgrijs: hsla(0, 0%, 80%, 1);
+  --grijs: hsla(0, 0%, 0%, 1);
+  --lichtgrijs: hsla(0, 0%, 20%, 1);
   --donkergrijs: hsla(0, 0%, 5%, 1);
   --gradient-1: linear-gradient(60deg, rgba(138,252,255,1) 0%, rgb(217, 66, 255) 100%);
   --gradient-2: linear-gradient(135deg, rgba(138,252,255,1) 0%, var(--zwart) 50%, rgba(217,66,255,1) 100%);
@@ -101,11 +102,11 @@ header{
 
 
 header.scroll{
-  background-color: var(--zwart);
-  background-color: hsla(0, 0%, 0%, .9);
+  background-color: color-mix(in lab, var(--zwart), hsla(0, 0%, 100%, .1));
+  /* background-color: hsla(0, 0%, 0%, .9); */
   backdrop-filter: blur(5px);
   --webkit-backdrop-filter: blur(5px);
-  border: 2px solid hsla(0, 0%, 100%, .1);
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   margin: 1rem;
   width: calc(100% - 2rem);
@@ -125,6 +126,7 @@ header.scroll{
 .logo{
   display: flex;
   align-items: baseline;
+  text-decoration: none;
 }
 .logo h2{
   font-size: var(--step-4);
@@ -271,7 +273,7 @@ header.scroll{
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  border: 3px solid hsla(0, 0%, 100%, .1);
+  border: 3px solid var(--border-color);
   height: 500px;
 }
 .links p{
@@ -304,10 +306,10 @@ header.scroll{
   content: ' ';
   position: absolute;
   inset: 0;
-  width: 150%;
-  height: 150%;
+  width: 100%;
+  height: 100%;
   background-color: hsla(0, 0%, 0%, .3);
-  backdrop-filter: blur(5px);
+  background-color: color-mix(in lab, var(--zwart), hsla(0,0%,0%, 0) 90%);
   transition: .5s ease-in-out;
 }
 .onswerkhome img{
@@ -350,15 +352,36 @@ header.scroll{
   z-index: 1001;
   position: relative;
   overflow: clip;
-  border: 2px solid var(--wit)
+  border: 2px solid var(--border-color);
+  border-radius: 20px;  
 }
 .contact_button{
   /* background-color: var(--persian-green); */
-  border: 2px solid var(--persian-green);
+  border: 2px solid color-mix( in lab, var(--persian-green), var(--border-color));
+  border-radius: 20px;
+  position: relative;
+  overflow: clip;
 }
-.menuToggle:hover,
-.contact_button:hover{
-  transform: scale(0.95);
+.contact_button::after,
+.menuToggle::after{
+  content: ' ';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--gradient-1);
+  z-index: -1;
+  opacity: 0;
+  transition: .3s ease-in-out;
+}
+.menuToggle:hover::after,
+.contact_button:hover::after{
+  opacity: .1;
+}
+body.light .menuToggle:hover::after,
+body.light .contact_button:hover::after{
+  opacity: .3;
 }
 .contact_button a{
   text-decoration: none;
@@ -459,6 +482,7 @@ header.scroll{
   font-size: 35vw;
   font-weight: 800;
   color: hsla(0, 0%, 100%, .1);
+  color: color-mix(in lab, var(--wit) , hsla(0, 0%, 0%, .1) 90%);
   opacity: 0;
   width: max-content;
   visibility: hidden;
@@ -622,7 +646,7 @@ header.scroll{
 .pagetext{
   border-radius: 20px;
   border: 2px solid hsla(0, 0%, 50%, .2);
-  background-color: hsla(0, 0%, 0%, .3);
+  backdrop-filter: blur(5px);
   position: relative;
   overflow: hidden;
 }
@@ -651,7 +675,7 @@ header.scroll{
 }
 .learnmore{
   padding: 1rem 2rem;
-  border: 2px solid hsla(0, 0%, 100%, .2);
+  border: 2px solid var(--border-color);
   font-size: var(--step-3);
   font-weight: 600;
   position: absolute;
@@ -684,10 +708,11 @@ header.scroll{
 .learnmore::after{
   background:var(--gradient-1);
   z-index: -2;
+  opacity: 1;
 }
 .hero ul li::before,
 .learnmore::before{
-  background: hsla(0, 0%, 0%, .95);
+  background: color-mix(in lab, var(--zwart), hsla(0, 0%, 0%, .2) 20%);
   z-index: -1;
 }
 .homepagetext.active .learnmore{
@@ -721,7 +746,7 @@ header.scroll{
   width: 100%;
   border-radius: 10px;
   position: relative;
-  border: 2px solid hsla(0, 0%, 100%, .1);
+  border: 2px solid var(--border-color);
   z-index: 0;
   opacity: .8;
   transition: .2s ease-in-out;
@@ -799,7 +824,7 @@ header.scroll{
   align-items: center;
   gap: 1rem;
   border-radius: 20px;
-  border: 2px solid hsla(0, 0%, 50%, .1);
+  border: 2px solid var(--border-color);
   max-width: 800px;
   width: 100%;
 }
@@ -857,7 +882,7 @@ header.scroll{
   list-style: none;
   padding: 1rem 2rem;
   border-radius: 10px;
-  border: 2px solid hsla(0, 0%, 100%, .2);
+  border: 2px solid var(--border-color);
   position: relative;
   z-index: 1;
   transition: .2s ease-in-out;
@@ -900,7 +925,7 @@ header.scroll{
   border: 2px solid hsla(0, 0%, 100%, .5);
 }
 .hero ul li:hover::before{
-  background: hsla(0, 0%, 0%, .85);
+  background: color-mix(in lab, var(--zwart), hsla(0, 0%, 0%, .2) 30%);
 }
 
 /* contact page */
@@ -914,7 +939,7 @@ header.scroll{
   padding: 1rem;
   gap: 1rem;
   position: relative;
-  border: 2px solid hsla(0, 0%, 100%, .1);
+  border: 2px solid var(--border-color);
 }
 .contactbox{
   display: flex;
@@ -946,12 +971,13 @@ header.scroll{
   text-transform: uppercase;
   padding: 0.5rem;
   border-radius: 10px;
-  border: 2px solid hsla(0, 0%, 100%, .05);
+  border: 2px solid var(--border-color);
   background: none;
   position: relative;
   overflow: hidden;
+  background-color: rgba(138,252,255,0.1);
 }
-.contact_col_1 p::after{
+/* .contact_col_1 p::after{
   content: '';
   position: absolute;
   inset: 0;
@@ -960,7 +986,7 @@ header.scroll{
   background: var(--gradient-1);
   z-index: -1;
   opacity: 0.1;
-}
+} */
 .contact_col_2 p{
   color: var(--wit);
   font-size: var(--step-1);
@@ -984,7 +1010,7 @@ header.scroll{
   padding: 1rem;
   font-size: var(--step-1);
   background: none;
-  border: solid hsla(0, 0%, 100%, .1);
+  border: solid var(--border-color);
   border-width: 0 0 2px 0;
   color: var(--wit);
   border-radius: 5px;
@@ -1002,16 +1028,16 @@ header.scroll{
   padding: 1rem;
   font-size: var(--step-2);
   color: var(--wit);
-  border: 2px solid hsla(0, 0%, 100%, .1);
+  border: 2px solid var(--border-color);
+  background: none;
   border-radius: 5px;
   cursor: pointer;
   transition: .2s ease-in-out;
   border-radius: 50px;
-  background: none;
   position: relative;
   overflow: hidden;
 }
-.contactform #button::after{
+/* .contactform #button::after{
   content: ' ';
   width: 100%;
   height: 100%;
@@ -1023,24 +1049,25 @@ header.scroll{
   z-index: -1;
   opacity: 0.05;
   transition: .2s ease-in-out;
-}
-.contactform #button:hover::after{
-  opacity: .1;
+} */
+.contactform #button:hover{
+  background-color: color-mix(in lab, var(--wit), hsla(0, 0%, 0%, .1) 90%);
 }
 /* theme switcher */
 
 .theme-toggle {
   width: min(400px, 80%);
-  width: 100px;
+  width: 150px;
   aspect-ratio: 7/3;
   border-radius: 1000px;
   padding: 2px;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.38), white);
   cursor: pointer;
   transition: 2s ease-in-out;
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
   z-index: 10001;
 }
 
@@ -1115,12 +1142,18 @@ header.scroll{
 }
 
 .sky::after {
-  background-color: #eaeaf1;
+  background: rgb(234,234,241);
+  /* background: radial-gradient(circle, rgba(0,0,0,0) 50%,rgb(241, 241, 234) 50%); */
   border: 3px solid #8e8da7;
+  background-size: 175%;
+  background-position: 100%;
   bottom: calc(-82% + 10px);
-  box-shadow: inset -13px -20px 11px 7px rgb(255 255 255 / 50%);
+  /* box-shadow: inset -13px -20px 11px 7px rgb(255 255 255 / 50%); */
 }
-
+.theme-toggle:hover .sky::before,
+.theme-toggle:hover .sky::after {
+  scale: 1.1;
+}
 .light .sky {
   rotate: 0deg;
 }

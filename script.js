@@ -137,3 +137,8 @@ function scrolltoUitstraling() {
     scrollToElement("uitstraling");
 }
 
+// ----------------- Theme switcher -----------------
+const themeToggle = document.querySelector(".theme-toggle");
+themeToggle.onclick = () => {
+document.querySelector("body").classList.toggle("light");
+};

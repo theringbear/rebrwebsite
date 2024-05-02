@@ -8,16 +8,16 @@
     <script src="https://kit.fontawesome.com/84a5521e2a.js" crossorigin="anonymous"></script>
 </head>
 <body id="home">
-    <div class="theme-toggle">
-        <div class="anchor">
-          <div class="sky"></div>
-        </div>
-      </div>
     <div id="blob"></div>
     <div id="blur"></div>
     <div class="mousecirkel"></div>
     <div class="blok"></div>
     <header>
+        <div class="theme-toggle">
+            <div class="anchor">
+              <div class="sky"></div>
+            </div>
+          </div>
         <div class="logo">
             <h2>rebr</h2>
             <p>rebranding</p>
@@ -119,11 +119,7 @@
     <script src="script.js"></script>
     <script src="homepagescript.js"></script>
     <script>
-        const themeToggle = document.querySelector(".theme-toggle");
-        themeToggle.onclick = () => {
-        document.querySelector("body").classList.toggle("light");
-        console.log("clicked");
-        };
+
     </script>
 </body>
 </html>
