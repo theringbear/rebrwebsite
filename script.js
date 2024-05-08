@@ -70,6 +70,7 @@ window.addEventListener('mousemove', event => {
     }
 });
 const homepagetext = document.querySelectorAll('.homepagetext');
+const overonscol = document.querySelectorAll('.overonscol');
 const learnmore = document.querySelectorAll('.learnmore');
 
 homepagetext.forEach(sec => {

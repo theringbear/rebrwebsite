@@ -19,12 +19,13 @@
     --wit: #FFFFFF;
     --charcoal: hsla(197, 37%, 24%, 1);
     --persian-green: #2a9d90;
-    --rood: rgb(255, 97, 76);
-    --paars: rgb(217, 66, 255);
+    --rood: #ff614c;
+    --paars: #d942ff;
     --grijs: hsla(0, 0%, 30%, 1);
     --lichtgrijs: hsla(0, 0%, 80%, 1);
     --donkergrijs: hsla(0, 0%, 5%, 1);
-    --gradient-1: linear-gradient(60deg, rgba(138,252,255,1) 0%, rgb(217, 66, 255) 100%);
+    --lichtblauw: rgba(138,252,255,1);
+    --gradient-1: linear-gradient(60deg, #8afcff 0%, #d942ff 100%);
     --gradient-2: linear-gradient(135deg, rgba(138,252,255,1) 0%, var(--zwart) 50%, rgba(217,66,255,1) 100%);
     --border-color: color-mix(in lab, var(--wit), hsla(0, 0%, 0%, .1) 90%);
   }
@@ -64,6 +65,9 @@ html{
 }
 #contact{
   --paginakleur: var(--paars);
+}
+#overons{
+  --paginakleur: var(--lichtblauw);
 }
 body.light{
   --zwart: #FFFFFF;
@@ -617,13 +621,15 @@ body.light .contact_button:hover::after{
   margin-right: auto;
 } */
 .homepagesec h2,
-.pagesec h2{
+.pagesec h2,
+#horizontal-scoll > h2{
   font-size: var(--step-8);
   color: var(--wit);
   font-weight: 600;
 }
 .homepagesec h2::after,
-.pagesec h2::after{
+.pagesec h2::after,
+#horizontal-scoll > h2::after{
   content: ' ';
   display: inline-block;
   height: 1rem;
@@ -691,8 +697,8 @@ body.light .contact_button:hover::after{
   transition:opacity 50ms ease-in, scale 50ms ease-in-out;
   overflow: hidden;
 }
-.pagetextsec ul li::after,
-.pagetextsec ul li::before,
+.pagetext ul li::after,
+.pagetext ul li::before,
 .hero ul li::after,
 .hero ul li::before,
 .learnmore::after,
@@ -703,7 +709,7 @@ body.light .contact_button:hover::after{
   width: 100%;
   height: 100%;
 }
-.pagetextsec ul li::after,
+.pagetext ul li::after,
 .hero ul li::after,
 .learnmore::after{
   background:var(--gradient-1);
@@ -834,7 +840,7 @@ body.light .contact_button:hover::after{
 .pagetextsec p{
   font-size: var(--step-0);
 }
-.pagetextsec ul{
+.pagetext ul{
   display: flex;
   /* flex-direction: column;  */
   flex-wrap: wrap;
@@ -844,7 +850,7 @@ body.light .contact_button:hover::after{
   width: 70%;
   min-width: min(400px, 100%);
 }
-.pagetextsec ul li{
+.pagetext ul li{
   font-size: var(--step-0);
   color: var(--wit);
   list-style: none;
@@ -855,7 +861,7 @@ body.light .contact_button:hover::after{
   position: relative;
   /* overflow: clip; */
 }
-.pagetextsec ul li::after{
+.pagetext ul li::after{
   border-radius: inherit;
   background-size: 200%;
   opacity: 0.3;
@@ -1061,7 +1067,7 @@ body.light .contact_button:hover::after{
   aspect-ratio: 7/3;
   border-radius: 1000px;
   padding: 2px;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.38), white);
+  /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.38), white); */
   cursor: pointer;
   transition: 2s ease-in-out;
   position: absolute;
@@ -1156,4 +1162,187 @@ body.light .contact_button:hover::after{
 }
 .light .sky {
   rotate: 0deg;
+}
+/* -------------- over ons ---------------------*/
+.overons{
+  /* width: 100%; */
+}
+.overons .pagetext{
+  width: 100%;
+}
+.overonsbox{
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.overons-col{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  /* text-align: center; */
+}
+.overonsbox img{
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.overons-col::after{
+  content: ' ';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* background: var(--gradient-2); */
+  background-color: hsla(0, 0%, 0%, .2);
+  backdrop-filter: blur(5px);
+  border-radius: inherit;
+  opacity: 0;
+  z-index: 0;
+  transition: .2s ease-in-out;
+}
+.overons-col-bottom{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  bottom: 1rem;
+  left: 50%;
+  translate: -50% 200%;
+  width: max-content;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  /* background: color-mix(in lab, var(--zwart), hsla(0, 0%, 0%, .2) 50%); */
+  transition: .2s ease-in-out .1s;
+  z-index: 1;
+  color: #fff;
+}
+.overons-col-bottom a,
+.overons-col-bottom h4{
+  text-decoration: none;
+  color: #fff;
+  font-size: var(--step-4);
+  border: 2px solid var(--border-color);
+  background-color: hsla(0, 0%, 0%, .2);
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  transition: .2s ease-in-out;
+}
+.overons-col-bottom a:hover{
+  background-color: hsla(0, 0%, 100%, .2);
+}
+.overons-col ul{
+  position: absolute;
+  top: 1rem;
+  left: calc(-10% + 1rem);
+  translate: 0 -200%;
+  /* border: 2px solid red; */
+  margin: 0;
+  transition: .2s ease-in-out .1s;
+  z-index: 1;
+}
+.overons-col ul li{
+  color: #fff;
+}
+.overons-col:hover .overons-col-bottom{
+  translate: -50% 0;
+}
+.overons-col:hover ul{
+  translate: 0;
+}
+.overons-col:hover::after{
+  opacity: 1;
+}
+/* horizontal-scroll */
+#horizontal-scoll {
+}
+#horizontal-scoll > h2{
+  width: max-content;
+  margin: 0 auto;
+}
+.horizontal-scoll-wrapper {
+  overflow: hidden;
+  height: 550px;
+}
+
+.horizontal {
+  display: flex;
+  height: 100%;
+  /* gap: 2rem; */
+  padding: 2rem;
+}
+
+.horizontal > div {
+  display: flex;
+  flex-shrink: 0;
+  /* padding: 0 5px; */
+  counter-increment: card;
+}
+
+.horizontal > div:last-child {
+  padding: 0 2rem 0 5px;
+}
+.horizontal .card{
+  display: flex;
+  align-items: stretch;
+  width: 700px;
+}
+.horizontal .lijntjes{
+  display: grid;
+  place-items: center;
+  width: 200px;
+  height: 100%;
+  opacity: .1;
+}
+.horizontal .card img{
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.horizontal .cardtext{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: safe; */
+  /* gap: 2rem; */
+  display: grid;
+  width: 500px;
+  grid-template-rows: .5fr 1fr;
+  padding: 2rem;
+  gap: 1rem;
+  /* background: #6e4ce1; */
+  border: 2px solid var(--border-color);
+  border-radius: 40px;
+  text-align: center;
+  position: relative;
+}
+.horizontal .cardtext::after{
+  content: counter(card);
+  font-family:'Josefin Sans' ,sans-serif;
+  position: absolute;
+  bottom: -2.5rem;
+  left: 2rem;
+  /* border: 2px solid red; */
+  font-size: 15rem;
+  font-weight: 800;
+  color: var(--border-color)
+}
+.horizontal .card h3{
+  font-size: var(--step-4);
+  color: var(--wit);
+  font-weight: 600;
+  margin: auto 0;
+}
+.horizontal .card p{
+  font-size: var(--step-0);
+  color: var(--lichtgrijs);
 }
