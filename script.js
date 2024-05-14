@@ -7,24 +7,62 @@ window.addEventListener('scroll', function() {
         header.classList.remove('scroll');
     }
 });
-try{
+// try{
 
-window.addEventListener('scroll', function() {
-    var element = document.querySelector('.hero ul');
-    var rect = element.getBoundingClientRect();
-    var offset = rect.top;
-    var threshold = -150; // Adjust this value as needed
+// window.addEventListener('scroll', function() {
+//     var element = document.querySelector('.hero ul');
+//     var rect = element.getBoundingClientRect();
+//     var offset = rect.top;
+//     var threshold = -150; // Adjust this value as needed
     
-    if (window.pageYOffset > offset - threshold) {
-      element.classList.add('sticky');
-    } else {
-      element.classList.remove('sticky');
+//     if (window.pageYOffset > offset - threshold) {
+//       element.classList.add('sticky');
+//     } else {
+//       element.classList.remove('sticky');
+//     }
+//   });
+// }
+// catch(err){
+//     console.log("no sticky");
+// }
+try {
+    // Define a media query
+    const mediaQuery = window.matchMedia('(min-width: 1800px)');
+  
+    // Function to handle the scroll event
+    function handleScroll() {
+      var element = document.querySelector('.hero ul');
+      if (!element) return; // Exit if the element is not found
+      var rect = element.getBoundingClientRect();
+      var offset = rect.top;
+      var threshold = -150; // Adjust this value as needed
+      
+      if (window.pageYOffset > offset - threshold) {
+        element.classList.add('sticky');
+      } else {
+        element.classList.remove('sticky');
+      }
     }
-  });
-}
-catch(err){
+  
+    // Function to handle media query changes
+    function handleMediaQueryChange(event) {
+      if (event.matches) {
+        // If the viewport is 1400px or more, add the scroll event listener
+        window.addEventListener('scroll', handleScroll);
+      } else {
+        // If the viewport is less than 1400px, remove the scroll event listener
+        window.removeEventListener('scroll', handleScroll);
+      }
+    }
+  
+    // Add a listener for the media query change
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+  
+    // Initial check
+    handleMediaQueryChange(mediaQuery);
+  } catch (err) {
     console.log("no sticky");
-}
+  }
 // menu
 const menu = document.querySelector('.menu');
 const menuToggle = document.querySelector('.menuToggle');

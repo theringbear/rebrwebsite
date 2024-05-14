@@ -269,7 +269,7 @@ header.scroll{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 2.5rem;
   position: relative;
   margin: 10rem 2rem 2rem 2rem;
 }
@@ -278,7 +278,9 @@ header.scroll{
   overflow: hidden;
   border-radius: 10px;
   border: 3px solid var(--border-color);
-  height: 500px;
+  max-height: 500px;
+  aspect-ratio: 16/12;
+  width: auto;
 }
 .links p{
   position: absolute;
@@ -1063,7 +1065,7 @@ body.light .contact_button:hover::after{
 
 .theme-toggle {
   width: min(400px, 80%);
-  width: 150px;
+  width: 10vw;
   aspect-ratio: 7/3;
   border-radius: 1000px;
   padding: 2px;
@@ -1168,7 +1170,7 @@ body.light .contact_button:hover::after{
   /* width: 100%; */
 }
 .overons .pagetext{
-  width: 100%;
+  width: min(max-content,100%);
 }
 .overonsbox{
   width: 100%;
@@ -1190,7 +1192,7 @@ body.light .contact_button:hover::after{
   object-fit: cover;
   width: 100%;
   height: auto;
-  max-width: 600px;
+  max-width: 400px;
   position: relative;
   border-radius: 10px;
 }
@@ -1229,7 +1231,7 @@ body.light .contact_button:hover::after{
 .overons-col-bottom h4{
   text-decoration: none;
   color: #fff;
-  font-size: var(--step-4);
+  font-size: var(--step-1);
   border: 2px solid var(--border-color);
   background-color: hsla(0, 0%, 0%, .2);
   padding: .5rem 1rem;
