@@ -86,6 +86,8 @@ body.light{
 body{
   background-color: var(--zwart);
   scroll-behavior: smooth;
+  width: 100vw;
+  overflow-x: hidden;
 }
 body.noscroll{
   overflow: hidden;
@@ -151,12 +153,17 @@ header.scroll{
   color: var(--grijs);
 }
 
+@media (max-width: 450px){
+  .logo p{
+    display: none;
+  }
+}
 .hero{
   padding-top: 15rem;
 }
 .hero h1,
 .contact h1{
-  font-size: 10vw;
+  font-size: max(10vw, var(--step-8));
   color: var(--wit);
   font-weight: 600;
   text-align: center;
@@ -281,6 +288,7 @@ header.scroll{
   max-height: 500px;
   aspect-ratio: 16/12;
   width: auto;
+  min-width: 250px
 }
 .links p{
   position: absolute;
@@ -389,6 +397,9 @@ body.light .menuToggle:hover::after,
 body.light .contact_button:hover::after{
   opacity: .3;
 }
+#contact .contact_button{
+  display: none;
+}
 .contact_button a{
   text-decoration: none;
   color: var(--wit);
@@ -413,6 +424,11 @@ body.light .contact_button:hover::after{
 }
 .contact_button a::after{
   background-color: var(--grijs);
+}
+@media ( max-width: 1100px){
+  .contact_button{
+    display: none;
+  }
 }
 .menuToggle::before{
   content: "close";
@@ -1061,11 +1077,17 @@ body.light .contact_button:hover::after{
 .contactform #button:hover{
   background-color: color-mix(in lab, var(--wit), hsla(0, 0%, 0%, .1) 90%);
 }
+
+@media ( max-width: 850px ){
+  .contacttext{
+    display: none;
+  }
+}
 /* theme switcher */
 
 .theme-toggle {
-  width: min(400px, 80%);
-  width: 10vw;
+  width: var(--step-8);
+  max-width: 150px;
   aspect-ratio: 7/3;
   border-radius: 1000px;
   padding: 2px;
@@ -1078,7 +1100,22 @@ body.light .contact_button:hover::after{
   transform: translate(50%, -50%);
   z-index: 10001;
 }
+@media ( max-width: 750px){
+  .theme-toggle{
+    left: 1rem;
+    opacity: 0;
+    transition: opacity .1s ease-in-out;
+  }
+  .noscroll .theme-toggle{
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
 
+  }
+  .noscroll .logo{
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+}
 .dark .theme-toggle {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), #595959);
 }
@@ -1300,9 +1337,13 @@ body.light .contact_button:hover::after{
 .horizontal .lijntjes{
   display: grid;
   place-items: center;
+  height: auto;
   width: 200px;
-  height: 100%;
-  opacity: .1;
+  opacity: .5;
+  user-select: none;
+}
+.light .horizontal .lijntjes{
+  display: none;
 }
 .horizontal .card img{
   width: 100%;
