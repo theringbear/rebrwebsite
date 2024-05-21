@@ -153,7 +153,7 @@ header.scroll{
   color: var(--grijs);
 }
 
-@media (max-width: 450px){
+@media (max-width: 500px){
   .logo p{
     display: none;
   }
@@ -274,6 +274,7 @@ header.scroll{
 
 .onswerkhome{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
@@ -285,10 +286,10 @@ header.scroll{
   overflow: hidden;
   border-radius: 10px;
   border: 3px solid var(--border-color);
-  max-height: 500px;
+  /* max-height: 500px; */
   aspect-ratio: 16/12;
-  width: auto;
-  min-width: 250px
+  width: 100%;
+  max-width: 500px;
 }
 .links p{
   position: absolute;
@@ -425,8 +426,17 @@ body.light .contact_button:hover::after{
 .contact_button a::after{
   background-color: var(--grijs);
 }
+.menu ul li[data-content="contact"]{
+  display: none;
+}
 @media ( max-width: 1100px){
   .contact_button{
+    display: none;
+  }
+  .menu ul li[data-content="contact"]{
+    display: block;
+  }
+  .menu ul li[data-content="home"]{
     display: none;
   }
 }
@@ -533,19 +543,22 @@ body.light .contact_button:hover::after{
   aspect-ratio: 1;
   background-color: var(--persian-green);
 } */
+@media (hover: hover) and (pointer: fine){
 .mousecirkel {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100px;
+  width: var(--step-8);
   aspect-ratio: 1;
-  background-color: var(--persian-green); 
+  background-color: #fff;
+  border: #000000 5px solid;
   border-radius: 50%;
   pointer-events: none; 
   transform: translate(-50%, -50%); 
   transition: scale .2s ease-in-out, opacity .2s ease-in-out, visibility .2s ease-in-out, width .2s ease-in-out .1s; 
   z-index: 2000;
-  mix-blend-mode: multiply;
+  /* mix-blend-mode: multiply; */
+  mix-blend-mode: difference;
   visibility: hidden;
   opacity: 0;
   scale: 1;
@@ -554,7 +567,7 @@ body.light .contact_button:hover::after{
 .mousecirkel.active {
   visibility: visible;
   opacity: 1;
-  width: 200px;
+}
 }
 
 /* mouse tracker */
@@ -573,6 +586,7 @@ body.light .contact_button:hover::after{
   }
 }
 
+@media (hover: hover) and (pointer: fine) {
 #blob {
   background-color: white;
   height: 10vmax;
@@ -589,6 +603,7 @@ body.light .contact_button:hover::after{
   opacity: 0.8;
   z-index: -2;
   filter: blur(100px);
+}
 }
 
 .blok{
@@ -642,6 +657,7 @@ body.light .contact_button:hover::after{
 .pagesec h2,
 #horizontal-scoll > h2{
   font-size: var(--step-8);
+  width: max-content;
   color: var(--wit);
   font-weight: 600;
 }
@@ -656,6 +672,23 @@ body.light .contact_button:hover::after{
   background-color: var(--grijs);
   background-color: color-mix(in lab, var(--paginakleur), hsla(0, 0%, 0%, .2));
   border-radius: 50%;
+}
+@media (max-width: 600px){
+  .homepagesec h2,
+  .pagesec h2,
+  #horizontal-scoll > h2{
+    font-size: var(--step-5);
+  }
+  .homepagesec h2::after,
+.pagesec h2::after,
+#horizontal-scoll > h2::after{
+    height: .25rem;
+  }
+  .homepagesec,
+  .pagesec{
+    gap: 1rem;
+    padding: .5rem;
+  }
 }
 .homepagetext,
 .pagetext{
@@ -714,6 +747,7 @@ body.light .contact_button:hover::after{
   transform-origin: left top;
   transition:opacity 50ms ease-in, scale 50ms ease-in-out;
   overflow: hidden;
+  background-color: var(--zwart);
 }
 .pagetext ul li::after,
 .pagetext ul li::before,
@@ -732,12 +766,7 @@ body.light .contact_button:hover::after{
 .learnmore::after{
   background:var(--gradient-1);
   z-index: -2;
-  opacity: 1;
-}
-.hero ul li::before,
-.learnmore::before{
-  background: color-mix(in lab, var(--zwart), hsla(0, 0%, 0%, .2) 20%);
-  z-index: -1;
+  opacity: .2;
 }
 .homepagetext.active .learnmore{
   opacity: 1;
@@ -755,6 +784,7 @@ body.light .contact_button:hover::after{
 }
 .servicesrow{
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center; 
   align-items: center;
@@ -768,12 +798,14 @@ body.light .contact_button:hover::after{
   gap: 1rem;
   padding: 2rem;
   width: 100%;
+  max-width: max-content;
   border-radius: 10px;
   position: relative;
   border: 2px solid var(--border-color);
   z-index: 0;
   opacity: .8;
   transition: .2s ease-in-out;
+  min-width: 250px;
 }
 .servicesrow > div:hover{
   opacity: 1;
@@ -889,6 +921,7 @@ body.light .contact_button:hover::after{
 }
 .hero > ul{
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   align-items: center;
@@ -904,17 +937,20 @@ body.light .contact_button:hover::after{
 }
 .hero > ul li{
   list-style: none;
-  padding: 1rem 2rem;
   border-radius: 10px;
+  padding: 1rem 2rem;
   border: 2px solid var(--border-color);
   position: relative;
   z-index: 1;
   transition: .2s ease-in-out;
+  background-color: var(--zwart);
 }
 .hero ul li::after,
 .hero ul li::before{
-  border-radius: 7.5px;
+  border-radius:7.5px;
   transition: .2s ease-in-out .1s;
+  opacity: 0.15;
+  z-index: -1;
 }
 .hero > ul li a{
   text-decoration: none;
@@ -940,6 +976,7 @@ body.light .contact_button:hover::after{
 .hero .dropdown li a{
   font-size: var(--step-2);
 }
+@media (hover: hover) and (pointer: fine){
 .hero > ul li:hover .dropdown{
   transform: translateY(0);
   opacity: 1;
@@ -951,7 +988,19 @@ body.light .contact_button:hover::after{
 .hero ul li:hover::before{
   background: color-mix(in lab, var(--zwart), hsla(0, 0%, 0%, .2) 30%);
 }
-
+}
+@media ( max-width: 750px){
+  .hero ul li{
+  padding: 0.5rem 1rem;
+}
+.hero .dropdown li{
+  padding: 0.25rem 0.75rem;
+}
+  .hero ul li a,
+  .hero .dropdown li a{
+    font-size: var(--step-1);
+  }
+}
 /* contact page */
 .contact{
   margin: 150px auto 2rem auto;
@@ -1102,11 +1151,13 @@ body.light .contact_button:hover::after{
 }
 @media ( max-width: 750px){
   .theme-toggle{
-    left: 1rem;
+    left: 0;
     opacity: 0;
+    visibility: hidden;
     transition: opacity .1s ease-in-out;
   }
   .noscroll .theme-toggle{
+    visibility: visible;
     opacity: 1;
     transition: opacity .5s ease-in-out;
 
@@ -1223,6 +1274,7 @@ body.light .contact_button:hover::after{
   border-radius: 20px;
   overflow: hidden;
   position: relative;
+  /* border: 2px solid red; */
   /* text-align: center; */
 }
 .overonsbox img{
@@ -1280,16 +1332,27 @@ body.light .contact_button:hover::after{
 }
 .overons-col ul{
   position: absolute;
+  justify-content: left;
   top: 1rem;
-  left: calc(-10% + 1rem);
+  left: 1rem;
   translate: 0 -200%;
-  /* border: 2px solid red; */
   margin: 0;
   transition: .2s ease-in-out .1s;
   z-index: 1;
 }
 .overons-col ul li{
   color: #fff;
+}
+.overons-col p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  z-index: 1;
+  color: #fff;
+  opacity: 0;
+  transition: .2s ease-in-out .1s;
 }
 .overons-col:hover .overons-col-bottom{
   translate: -50% 0;
@@ -1298,6 +1361,9 @@ body.light .contact_button:hover::after{
   translate: 0;
 }
 .overons-col:hover::after{
+  opacity: 1;
+}
+.overons-col:hover p{
   opacity: 1;
 }
 /* horizontal-scroll */

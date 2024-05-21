@@ -144,6 +144,7 @@ menulistitem.forEach(list => {
 
 
 // scroll to id
+
 function scrollToElement(elementId) {
     var access = document.getElementById(elementId);
     var offset = -125; // Adjust this value as needed
@@ -176,8 +177,33 @@ function scrolltoUitstraling() {
     scrollToElement("uitstraling");
 }
 
+
+
 // ----------------- Theme switcher -----------------
 const themeToggle = document.querySelector(".theme-toggle");
-themeToggle.onclick = () => {
-document.querySelector("body").classList.toggle("light");
+
+// Function to toggle the theme
+function toggleTheme() {
+    // Get the body element
+    const body = document.querySelector("body");
+    // Toggle the 'light' class on the body
+    body.classList.toggle("light");
+
+    // Save the current theme to localStorage
+    if (body.classList.contains("light")) {
+        localStorage.setItem("theme", "light");
+    } else {
+        localStorage.setItem("theme", "dark");
+    }
+}
+
+// Add a click event listener to the theme toggle button
+themeToggle.onclick = toggleTheme;
+
+// Check the saved theme on page load
+window.onload = () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        document.querySelector("body").classList.add("light");
+    }
 };
