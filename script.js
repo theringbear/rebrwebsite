@@ -1,68 +1,32 @@
 // header scroll
+// const header = document.querySelector('header');
+// window.addEventListener('scroll', function() {
+//     if(window.scrollY > 0) {
+//         header.classList.add('scroll');
+//     } else {
+//         header.classList.remove('scroll');
+//     }
+// });
 const header = document.querySelector('header');
+const list = document.querySelector('.hero ul');
+let lastScrollY = window.scrollY;
+
 window.addEventListener('scroll', function() {
-    if(window.scrollY > 0) {
+    if (window.scrollY < lastScrollY) {
         header.classList.add('scroll');
+        list.classList.add('sticky');
     } else {
         header.classList.remove('scroll');
+        list.classList.remove('sticky');
     }
+    lastScrollY = window.scrollY;
 });
-// try{
-
-// window.addEventListener('scroll', function() {
-//     var element = document.querySelector('.hero ul');
-//     var rect = element.getBoundingClientRect();
-//     var offset = rect.top;
-//     var threshold = -150; // Adjust this value as needed
-    
-//     if (window.pageYOffset > offset - threshold) {
-//       element.classList.add('sticky');
-//     } else {
-//       element.classList.remove('sticky');
-//     }
-//   });
-// }
-// catch(err){
-//     console.log("no sticky");
-// }
-try {
-    // Define a media query
-    const mediaQuery = window.matchMedia('(min-width: 1800px)');
-  
-    // Function to handle the scroll event
-    function handleScroll() {
-      var element = document.querySelector('.hero ul');
-      if (!element) return; // Exit if the element is not found
-      var rect = element.getBoundingClientRect();
-      var offset = rect.top;
-      var threshold = -150; // Adjust this value as needed
-      
-      if (window.pageYOffset > offset - threshold) {
-        element.classList.add('sticky');
-      } else {
-        element.classList.remove('sticky');
-      }
-    }
-  
-    // Function to handle media query changes
-    function handleMediaQueryChange(event) {
-      if (event.matches) {
-        // If the viewport is 1400px or more, add the scroll event listener
-        window.addEventListener('scroll', handleScroll);
-      } else {
-        // If the viewport is less than 1400px, remove the scroll event listener
-        window.removeEventListener('scroll', handleScroll);
-      }
-    }
-  
-    // Add a listener for the media query change
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
-  
-    // Initial check
-    handleMediaQueryChange(mediaQuery);
-  } catch (err) {
-    console.log("no sticky");
-  }
+window.addEventListener('scroll', function() {
+    if (window.scrollY == 0) {
+        header.classList.remove('scroll');
+        list.classList.remove('sticky');
+    } 
+});
 // menu
 const menu = document.querySelector('.menu');
 const menuToggle = document.querySelector('.menuToggle');
@@ -72,7 +36,7 @@ const navlinks = document.querySelector('.hero ul');
 menuToggle.onclick = function() {
     menu.classList.toggle('active');
     menuToggle.classList.toggle('active');
-    header.classList.remove('scroll');
+    // header.classList.remove('scroll');
     document.body.classList.toggle('noscroll');    
     try{
         navlinks.classList.remove('sticky');
@@ -81,31 +45,24 @@ menuToggle.onclick = function() {
     }
     // disable scrolling when menu is open
 };
-
-// mouse tracker menu
-
-// document.addEventListener('mousemove', function(e) {
-    //     mousecirkel.style.left = e.clientX + 'px';
-    //     mousecirkel.style.top = e.clientY + 'px';   
-    // });
     
 const mousecirkel = document.querySelector('.mousecirkel');
     
 window.addEventListener('mousemove', event => { 
-    const { pageX, pageY } = event;
+    const { clientX, clientY } = event;
     if (document.body.id == "home") {
         const blob = document.getElementById("blob");
         blob.animate({
-            left: `${pageX}px`,
-            top: `${pageY}px`
-        }, { duration: 3000, fill: "forwards" });
+            left: `${clientX}px`,
+            top: `${clientY}px`
+        }, { duration: 5000, fill: "forwards" });
     }
     if (menu.classList.contains('active')) {
-    mousecirkel.animate({
-        left: `${pageX}px`,
-        top: `${pageY}px`
-    }, { duration: 3000, fill: "forwards" });
-    }
+        mousecirkel.animate({
+            left: `${clientX}px`,
+            top: `${clientY}px`
+        }, { duration: 3000, fill: "forwards" });
+        }
 });
 const homepagetext = document.querySelectorAll('.homepagetext');
 const overonscol = document.querySelectorAll('.overonscol');
