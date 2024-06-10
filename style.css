@@ -1064,7 +1064,7 @@ body.light .contact_button:hover::after{
 /* theme switcher */
 
 .theme-toggle {
-  width: min(400px, 80%);
+  max-width: 150px;
   width: 10vw;
   aspect-ratio: 7/3;
   border-radius: 1000px;
