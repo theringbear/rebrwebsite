@@ -1,48 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/media/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/media/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/media/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/media/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/media/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <title>Contact - Rebr</title>
+    <meta name="description" content="Neem contact op met REBR voor uw branding en webontwikkeling behoeften. Vul ons formulier in en ons team neemt spoedig contact met u op.">
+    <meta name="keywords" content="contact, REBR, branding, webontwikkeling, formulier, ondersteuning">
+    <!-- <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'"> -->
     <link rel="stylesheet" href="/style.css">
 </head>
 <body id="contact">
     <div class="mousecirkel"></div>
     <header>
-      <div class="theme-toggle">
-        <div class="anchor">
-          <div class="sky"></div>
+        <div class="theme-toggle">
+            <div class="anchor">
+                <div class="sky"></div>
+            </div>
         </div>
-      </div>
-        <div class="logo">
+        <a class="logo" href="/index.html">
             <h2>rebr</h2>
             <p>rebranding</p>
-        </div>
-            <div class="buttons">
+        </a>
+        <div class="buttons">
             <div class="menuToggle">
-               <p>menu</p>
+                <p>menu</p>
             </div>
             <div class="contact_button">
-               <a href="contact/">contact</a>
+                <a href="/contact/">contact</a>
             </div>
-            </div>
+        </div>
     </header>
     <nav class="menu">  
         <ul>
             <li data-content="home"><div><a style="--delay: 0" href="/index.html">home</a></div></li>
             <li data-content="services"><div><a style="--delay: 1" href="/services/">services</a></div></li>
-            <li data-content="ons werk"><div><a style="--delay: 2" href="/onswerk">ons werk</a></div></li>
-            <li data-content="over ons"><div><a style="--delay: 3" href="/overons/">over ons</a></div></li>
-            <!-- <li data-content="contact"><div><a style="--delay: 4" href="/contact/">contact</a></div></li> -->
+            <li data-content="over ons"><div><a style="--delay: 3" href="/overons/">over Ons</a></div></li>
+            <li data-content="contact"><div><a style="--delay: 4" href="/contact/">contact</a></div></li>
         </ul>
     </nav>
     <div class="contact">
-      <h1>contact</h1>
-
+        <h1>Contact</h1>
         <div class="contact_col_2">
-            <p>Bedankt voor uw interesse in Rebr. Vul alstublieft ons formulier in en een teamlid zal spoedig contact met u opnemen!</p>
-            </div>
-            <div class="contactbox">
+            <p>Bedankt voor uw interesse in REBR. Vul alstublieft ons formulier in en een teamlid zal spoedig contact met u opnemen!</p>
+        </div>
+        <div class="contactbox">
             <div class="contacttext">
                 <div class="contact_col_1">
                     <p>Neem contact op</p>
@@ -53,49 +64,69 @@
                     <p>Kontakta oss</p>
                     <p>Contate-nos</p>
                     <p>Skontaktuj się</p>
-                    </div>
-
-            </div>
-            <div class="contactform">
-                <form>
-                      <div class="field">
-                        <input
-                          class="input"
-                          type="text"
-                          required
-                          placeholder="Name"
-                          name="from_name"
-                          id="from_name"
-                        />
-                      </div>
-                      <div class="field">
-                        <input
-                          class="input"
-                          type="text"
-                          required
-                          placeholder="Email"
-                          name="email"
-                          id="email"
-                          />
-                        </div>
-                      <div class="field">
-                        <input
-                          class="input"
-                          type="text"
-                          placeholder="Phone Number"
-                          name="phonenumber"
-                          id="phonenumber"
-                        />
-                      </div>
-                      <button id="button">
-                          Send Message
-                        </div>
-                      </button>
-                  </form>
                 </div>
             </div>
+            <div class="contactform">
+                <form id="form">
+                    <div class="field">
+                        <input
+                            class="input"
+                            type="text"
+                            required
+                            placeholder="Naam"
+                            name="name_id"
+                            id="name_id"
+                        />
+                    </div>
+                    <div class="field">
+                        <input
+                            class="input"
+                            type="email"
+                            required
+                            placeholder="Email"
+                            name="email_id"
+                            id="email_id"
+                        />
+                    </div>
+                    <div class="field">
+                        <input
+                            class="input"
+                            type="tel"
+                            placeholder="Telefoonnummer"
+                            name="phone_id"
+                            id="phone_id"
+                        />
+                    </div>
+                    <input type="submit" id="button" value="Verstuur bericht">
+                </form>
+            </div>
+        </div>
     </div>
-    <script src="/script.js"></script>
+    <script async src="/script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        emailjs.init('s1DA1vJSaUQbqvDnS');
+    </script>
+    <script>
+        const btn = document.getElementById('button');
+        const form = document.getElementById('form');
 
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            btn.value = 'Versturen...';
+            const serviceID = 'service_08smgat';
+            const templateID = 'template_5e7ybam';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.value = 'Verstuur bericht';
+                    alert('Verstuurd!');
+                    form.reset();
+                }, (err) => {
+                    btn.value = 'Verstuur bericht';
+                    alert(JSON.stringify(err));
+                });
+        });
+    </script>
 </body>
 </html>
